@@ -1,28 +1,28 @@
-// Approach
-// 1. find the shortest string in strs and set it as the prefix
-// 2. for loop with i for index 
-// 3. loop through each string in strs
-// 4. if the cur string[i] !== prefix[i] meaning mismatch return preffix with slice(0, i) 
+// return string
+
+// 1. declare result = "", declare and cur index for letter
+// 2. find the shorttest string in the array with reduce
+// 3. for loop with i for each string in the array
+// 4. check using curIndex if cur item is the same as the shortest[curIndex]
+// 5. if not return result
+// 6. after loop return result
 
 function longestCommonPrefix(strs: string[]): string {
-    if (strs.length === 0) return "";
+    let result = ""
 
-    let prefix = strs.reduce((shortest, current) => 
-        current.length < shortest.length 
-        ? current 
-        : shortest
-    )
+    const shortest = strs.reduce((short, cur) => cur.length < short.length ? cur : short)
 
-    for(let i = 0; i < prefix.length; i++) {
-        const letter = prefix[i] 
+    for(let i = 0; i < shortest.length;i++) {
+        for(let j = 0; j < strs.length;j++) {
+            const current = strs[j]
 
-        for(const str of strs) {
-            if(str[i] !== letter) {
-                return prefix.slice(0, i)
+            if(current[i] !== shortest[i]){
+                return result
             }
         }
+
+        result = shortest.substring(0, i + 1)
     }
 
-    return prefix
-}
-
+    return result
+};
