@@ -1,20 +1,19 @@
-// Responsibilities 
 // 1. mutate nums
-// 2. return k
+// 2. return number
 
-// declare k = 0 as the new index tracker to rewrite nums
-// scan from left to right
-// if cur !== val reaplce the k index with cur value
+// 1. scan from left to right
+// 2. declare index as the next available index to write
+// 3. for loop if cur !== val write it to the index
 
 function removeElement(nums: number[], val: number): number {
-    let k = 0
-    
+    let index = 0
+
     for(const num of nums) {
         if(num !== val) {
-            nums[k] = num
-            k++
+            nums[index] = num
+            index++
         }
     }
 
-    return k
+    return index
 };
