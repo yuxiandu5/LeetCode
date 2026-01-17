@@ -1,19 +1,21 @@
-// 1. mutate nums
-// 2. return number
+// mutate nums
+// return number
 
-// 1. scan from left to right
-// 2. if prev num is not equal to cur meaning diff num
-// 3. write it to the next available index
+// 1. const write = 0
+// 3. for loop
+// 4. if cur !== prev
+// 5. nums[write] = num write++
+// 6. return write
 
 function removeDuplicates(nums: number[]): number {
-    let index = 1
+    let write = 1
 
-    for(let i = 1; i < nums.length;i++) {
+    for(let i = 1; i < nums.length; i++) {
         if(nums[i] !== nums[i - 1]){
-            nums[index] = nums[i]
-            index++
+            nums[write] = nums[i]
+            write++
         }
     }
 
-    return index
+    return write
 };
