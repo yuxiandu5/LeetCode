@@ -11,7 +11,7 @@
 
 function majorityElement(nums: number[]): number {
     let count = 0
-    let current = nums[0]
+    let current
 
     for(const num of nums) {
         if(count === 0) {
