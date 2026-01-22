@@ -1,29 +1,25 @@
 // return number
 
-// Binary Search
-
-// 1. left = 0 right = x
-// 2. take mid if mid squre > x then {
-//     right = mid - 1
-// } else {
-//     left = mid + 1
-// }
+// 1. binary search
+// 2. i = 0, j = x 
+// 3. while (i <= j)
+// 4. if(i + x) / 2 > x ...
+// 5. return i
 
 function mySqrt(x: number): number {
-    let left = 0
+    let left = 1
     let right = x
-    let answer
 
     while(left <= right) {
-        const mid = Math.floor((left + right) / 2)
+        const middle = Math.floor((left + right) / 2)
+        const square = middle * middle
 
-        if ((mid * mid) > x) {
-            right = mid - 1
+        if(square > x) {
+            right = middle - 1
         } else {
-            answer = mid
-            left = mid + 1
+            left = middle + 1
         }
     }
 
-    return answer
+    return right
 };
