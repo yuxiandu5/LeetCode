@@ -1,18 +1,16 @@
-// Output
-// 1. return boolean
-
-// Approach
-// 1. set
-// 2. iterate from left to right
-// 3. if in set return true
+// 1. decalare a set
+// 2. loop through nums
+// 3. check if num in set if not add if yes return true
+// 4. return false
 
 function containsDuplicate(nums: number[]): boolean {
-    const record = new Set<number>()
+    const record = new Set()
 
     for(const num of nums) {
         if(record.has(num)) {
             return true
         }
+
         record.add(num)
     }
 
