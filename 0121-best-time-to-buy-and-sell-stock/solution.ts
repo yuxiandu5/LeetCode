@@ -1,20 +1,30 @@
-// Output
-// 1. return number
+// return number
 
-// Approach
 // 1. scan from left to right
-// 2. for each iteration store the min price so far cal sell today profit based on min so far
-// and the max profit so far 
+// 2. record the cheapest price to buy so far on the way, and declare profit
+// 3. compare the cheapest to the cur day price if cheaper than profit then profit = cur profit
+// 4. return profit > 0 ? profit : 0
 
 function maxProfit(prices: number[]): number {
-    let minPrice = prices[0]
-    let maxProfit = 0;
+    if(prices.length === 1) {
+        return 0
+    }
+        
+    let cheapest = prices[0]
+    let profit = 0
 
-    for (const price of prices) {
-        let profit = price - minPrice
-        maxProfit = Math.max(maxProfit, profit)
-        minPrice = Math.min(minPrice, price)
+    for(let i = 1;i < prices.length;i++) {
+        const todayPrice = prices[i]
+        const todayProfit = todayPrice - cheapest
+
+        if(todayProfit > profit) {
+            profit = todayProfit
+        }
+
+        if(todayPrice < cheapest) {
+            cheapest = todayPrice
+        }
     }
 
-    return maxProfit;
+    return profit > 0 ? profit : 0
 };
