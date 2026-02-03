@@ -1,30 +1,40 @@
 // return boolean
 
-// 1. create a stack to record whats the next closing bracket
-// 2. for loop if opening push 
-// 3. if its an closing match the stack if true pop else return false
-// 4. return if stack is empty
+// 1. declare a Record for the brackets
+// 2. scan from left to right
+// 3. if its one of the key push the corresponding value into array
+// 4. if its one of the value check if it matches the last element in the array 
+//     if yes remove the value 
+//     if not return false
+// 5. return true
 
 function isValid(s: string): boolean {
-    const record: Record<string, string> = {
-        "(": ")",
-        "{": "}",
-        "[": "]",
+    if(s.length === 1) {
+        return false
+    }
+        
+    const map: Record<string, string> = {
+        '(': ')',
+        '[': ']',
+        '{': '}',
     }
 
-    let stack = []
+    const record: string[] = []
 
-    for(const bracket of s) {
-        if(record[bracket]) {
-            stack.push(record[bracket])
+    for(const element of s) {
+        const cur = map[element]
+
+        if(cur) {
+            record.push(cur)
         } else {
-            const last = stack.pop()
-
-            if(bracket !== last) {
+            const length = record.length
+            if(length === 0 || record[length - 1] !== element) {
                 return false
             }
+            
+            record.pop()
         }
     }
 
-    return !stack.length
+    return record.length === 0
 };
