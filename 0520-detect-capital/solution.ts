@@ -4,12 +4,10 @@ function detectCapitalUse(word: string): boolean {
 
     const firstLetter = word[0]
     const rest = word.slice(1)
-    if (
-        firstLetter === firstLetter.toUpperCase() &&
+
+    if(firstLetter === firstLetter.toUpperCase() &&
         rest === rest.toLowerCase()
-    ) {
-        return true;
-    }
+    ) return true
 
     return false
-};
+}
