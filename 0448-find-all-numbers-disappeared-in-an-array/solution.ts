@@ -1,17 +1,14 @@
-// Output
-// 1. array of nums
-
-// Approach
-// 1. we a Set of nums which aligns in the range
-// 2. iterate through nums if record has this num remove it
-// 3. retrun the record
+// 1. move nums into a set
+// 2. loop with i 
+//     if i + 1 not in set push to result
+// 3. return result
 
 function findDisappearedNumbers(nums: number[]): number[] {
-    const set = new Set(nums)
-    let result = []
+    const record = new Set(nums)
+    const result = []
 
-    for(let i = 1; i <= nums.length; i++) {
-        if(!set.has(i)){
+    for(let i = 1;i < nums.length + 1;i++) {
+        if(!record.has(i)) {
             result.push(i)
         }
     }
