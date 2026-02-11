@@ -1,26 +1,24 @@
-// 1. new array with n numbers
-// 2. loop through if num is divisible by both 3 and 5 make the index = FizzBuzz, etc
-
 function fizzBuzz(n: number): string[] {
-    const answer: string[] = []
-
-    for(let i = 1; i <= n; i++) {
-        let cur = ""
-
-        if(i % 3 === 0) {
-            cur = "Fizz"
+    const output: string[] = []
+            
+    for(let num = 1;num <= n;num++) {
+        if(num % 3 === 0 && num % 5 === 0) {
+            output.push('FizzBuzz')
+            continue
         }
 
-        if(i % 5 === 0) {
-            cur += "Buzz"
+        if(num % 3 === 0) {
+            output.push('Fizz')
+            continue
         }
 
-        if(cur === "") {
-            cur = i.toString()
+        if(num % 5 === 0) {
+            output.push('Buzz')
+            continue
         }
 
-        answer.push(cur)
-    }
+        output.push(num.toString())
+    } 
 
-    return answer
+    return output
 };
