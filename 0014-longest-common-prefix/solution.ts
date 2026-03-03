@@ -1,27 +1,22 @@
-// return string
-
-// 1. declare result = "", declare and cur index for letter
-// 2. find the shorttest string in the array with reduce
-// 3. for loop with i for each string in the array
-// 4. check using curIndex if cur item is the same as the shortest[curIndex]
-// 5. if not return result
-// 6. after loop return result
+// 1. sort the strs
+// 2. declare first last and result 
+// 3. loop through first 
+//     compare each letter with first and last 
+//     if no same return results
 
 function longestCommonPrefix(strs: string[]): string {
-    let result = ""
+    const strings = strs.sort()
 
-    const shortest = strs.reduce((short, cur) => cur.length < short.length ? cur : short)
+    let first = strings[0]
+    let last = strings.at(-1)
+    let result = ''
 
-    for(let i = 0; i < shortest.length;i++) {
-        for(let j = 0; j < strs.length;j++) {
-            const current = strs[j]
-
-            if(current[i] !== shortest[i]){
-                return result
-            }
+    for(let i = 0;i < first.length;i++) {
+        if(first[i] !== last[i]) {
+            return result
         }
 
-        result = shortest.substring(0, i + 1)
+        result += first[i]
     }
 
     return result
