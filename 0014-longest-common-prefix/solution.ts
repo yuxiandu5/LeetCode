@@ -1,23 +1,16 @@
-// 1. sort the strs
-// 2. declare first last and result 
-// 3. loop through first 
-//     compare each letter with first and last 
-//     if no same return results
+// sort strs
+// declare result
+// loop with i < strs.length
+// ["flow", "flower","flight"]
 
 function longestCommonPrefix(strs: string[]): string {
-    const strings = strs.sort()
+    let prefix = strs[0]
 
-    let first = strings[0]
-    let last = strings.at(-1)
-    let result = ''
-
-    for(let i = 0;i < first.length;i++) {
-        if(first[i] !== last[i]) {
-            return result
+    for(let i = 0;i < strs.length;i++) {
+        while(!strs[i].startsWith(prefix)) {
+            prefix = prefix.slice(0, -1)
         }
-
-        result += first[i]
     }
 
-    return result
+    return prefix
 };
