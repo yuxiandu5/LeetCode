@@ -1,19 +1,17 @@
-// return number
-
-// 1. scan from left to right
-// 2. for loop from left to right
-// 3. if slice hatstack[i, i + needle.length] === needle return i 
-// 4. at the end return -1
-
+// declare right which is the length of needle
+// scan from left to right for right <= haystack.length
+// use subString(i, right) equal return i 
+// end return -1
 
 function strStr(haystack: string, needle: string): number {
-    const j = needle.length
-    const k = haystack.length
+    let right = needle.length
 
-    for(let i = 0; i <= k - j;i++) {
-        if(haystack.slice(i, i + j) === needle) {
+    for(let i = 0; right <= haystack.length; i++) {
+        if(haystack.substring(i, right) === needle) {
             return i
         }
+
+        right++
     }
 
     return -1
